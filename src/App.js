@@ -10,14 +10,31 @@ class App extends Component {
      { name: 'Crystal', age: 25, belt: 'pink', id: 3}
     ]
   };
+
+  addNinja = (ninja) => { //function adds a ninja to a state
+    ninja.id = Math.random(); // adding a dynamic id property to the object78
+
+    // states cannot be updated directly so we'll copy the old array, add the new value and set the state to that
+    let ninjas = [...this.state.ninjas, ninja];
+
+    this.setState({
+      ninjas : ninjas
+    });
+
+  };
+
+  deleteNinja = (id) => { // function deletes a ninja from the state
+    console.log(id);
+  };
+
   
   render() {
     return (
       <div className="App">
         <h1>My first React app!</h1>
         <p>welcome :)</p>
-        <Ninjas ninjas={this.state.ninjas}/>
-        <Addninjas />
+        <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
+        <Addninjas addNinja={this.addNinja}/>
       </div>
     );
   }

@@ -16,7 +16,7 @@ class AddNinja extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault(); // stops page referesh on submit
-        console.log(this.state);
+        this.props.addNinja(this.state);
     };
 
     render() {
