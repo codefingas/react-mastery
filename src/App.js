@@ -24,7 +24,13 @@ class App extends Component {
   };
 
   deleteNinja = (id) => { // function deletes a ninja from the state
-    console.log(id);
+    let ninjas = this.state.ninjas.filter(ninja => { // we cannot alter react state, so we filter
+      return ninja.id !== id
+    });
+
+    this.setState({
+      ninjas : ninjas
+    })
   };
 
   
